@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Page1";
+}
+
+<h2>Page1</h2>
+<SCRIPT language=JavaScript1.2>
+<!-- start
+function centi()
+{
+centigrade=document.getElementById("0").value.replace(",",".");
+if (centigrade<-273.15)
+{
+alert("Temperature is too low");
+return false;
+}
+fahrenheit=centigrade*9/5+32;
+fill();
+}
+function fahr()
+{
+fahrenheit=document.getElementById("1").value.replace(",",".");
+if (fahrenheit<-459.67)
+{
+alert("Temperature is too low");
+return false;
+}
+centigrade=(fahrenheit-32)*5/9;
+fill();
+}
+function fill()
+{
+faults(centigrade);
+faults(fahrenheit);
+document.getElementById("0").value=centigrade;
+document.getElementById("1").value=fahrenheit;
+}
+function faults(newVal)
+{
+neg=0;
+if (newVal<0)
+{
+newVal*=-1;
+neg=1;
+}
+j=0;
+while (newVal<1 && newVal>0)
+{
+j++;
+newVal*=10;
+}
+newVal*=100000;
+newVal=Math.round(newVal);
+newVal/=100000;
+newVal/=Math.pow(10,j);
+newVal="a"+newVal;
+cache=0;
+if (newVal.indexOf("e") != -1)
+{
+cache=newVal.substr(newVal.indexOf("e"),5);
+newVal=newVal.substring(0,newVal.indexOf("e"));
+}
+dig=new Array;
+for (j=1;j<3;j++)
+dig[j]=newVal.substr(newVal.length-j-1,1);
+if (dig[1] == 9 && dig[2] == 9 && dig[3] == 9 && dig[4] == 9)
+{
+rest=newVal.substring(newVal.indexOf("."),100).length-1;
+newVal=newVal.substring(1,newVal.length-1);
+newVal="a"+eval(eval(newVal)+Math.pow(10,-rest+2));
+}
+for (j=1;j<3;j++)
+dig[j]=newVal.substr(newVal.length-j-1,1);
+if (dig[1] == 0 && dig[2] == 0 && dig[3] == 0 && dig[4] == 0)
+{
+check=0;
+for (j=0;j<newVal.length-5;j++)
+{
+if (newVal.substr(j,1)!=0)
+check++;
+}
+if (check>2)
+newVal=newVal.substring(0,newVal.length-1);
+}
+if (cache)
+newVal=newVal+cache;
+newVal=newVal.substring(1,newVal.length);
+newVal=eval(newVal);
+if (neg)
+newVal*=-1;
+return newVal;
+}
+// end Temperature calculation - Celsius, Fahrenheit, Kelvin and Rankine -->
+</SCRIPT>
+<TABLE cellSpacing=2 cellPadding=0 border=0 style="width:550px;text-align:center;margin:0 auto;line-height:22px;font-size:12px;">
+    <TBODY>
+        <TR vAlign=top>
+            <TD class=main>
+                <TABLE class=box cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                        <TR>
+                            <TD>
+                                <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                                    <TBODY>
+                                        <TR>
+                                            <TD id=text>
+                                                <DIV align=center>
+                                                    <TABLE id=table2 borderColor=#6699ff cellSpacing=0 width="500" border=1>
+                                                        <TBODY>
+                                                            <TR>
+                                                                <TD>
+                                                                    <DIV align=center>
+                                                                        <TABLE id=table3 cellSpacing=0 cellPadding=4 border=0>
+                                                                            <TBODY>
+                                                                                <TR>
+                                                                                    <TD align=right>
+                                                                                        <FONT color=#000000>
+                                                                                            <FONT size=-1>Fahrenheit</FONT>
+                                                                                        </FONT><FONT face=Arial color=#000000><SUP>ο</SUP>F</FONT>
+                                                                                    </TD>
+                                                                                    <TD>
+                                                                                        <INPUT id=1 style="BACKGROUND-COLOR: #ffffff" onchange=fahr() size=8 name=T1>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD align=right>
+                                                                                        <FONT color=#000000>
+                                                                                            <FONT face=Arial>Celsius temperature</FONT>℃<FONT face=Arial>:</FONT>
+                                                                                        </FONT>
+                                                                                    </TD>
+                                                                                    <TD>
+                                                                                        <INPUT id=0 style="BACKGROUND-COLOR: #ffffff"
+                                                                                               onchange=centi() size=8 name=T2>
+                                                                                    </TD>
+                                                                                </TR>
+                                                                                <TR>
+                                                                                    <TD align=right><INPUT style="BACKGROUND-COLOR: #6699ff" type=button value=&nbsp;&nbsp;Calculation&nbsp;&nbsp;&nbsp; name=button></TD>
+                                                                                </TR>
+                                                                            </TBODY>
+                                                                        </TABLE>
+                                                                    </DIV>
+                                                                </TD>
+                                                            </TR>
+                                                        </TBODY>
+                                                    </TABLE>
+                                                </DIV>
+                                            </TD>
+                                </TABLE>
+                </TABLE>
+</TABLE>
